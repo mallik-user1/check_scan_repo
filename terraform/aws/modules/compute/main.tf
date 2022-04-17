@@ -124,7 +124,6 @@ resource "aws_cloudwatch_log_group" "km_log_group" {
 resource "aws_instance" "km_vm"{
   #zs:skip=AC_AWS_0480 ignore
   #zs:skip=AC_AWS_0479 ignore
-  #zs:skip=AC_AWS_0449 ignore
   ami = data.aws_ami.ubuntu_ami.id
   instance_type = "t2.micro"
   vpc_security_group_ids = [ var.elb_sg ]
