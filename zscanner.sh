@@ -10,18 +10,17 @@ echo $token
 $(curl --location --request GET 'https://int.api.zscwp.io/iac/onboarding/v1/cli/download?platform=Linux&arch=x86_64' --header "Authorization: Bearer $token" --header 'Content-Type: application/json' --data-raw '{
     "platform": "Linux",
     "arch": "x86_64"
-}' --output zscanner_binary.tar.gz && tar -xzvf zscanner_binary.tar.gz)
-echo "binary downloaded"
-binary_details=$(ls -lart zscanner_binary.tar.gz)
-echo $binary_details
-echo "retrieved zscanner"
-$(sudo install zscanner /usr/local/bin && rm zscanner)
+}' --output zscanner_binary.tar.gz)
+tar_contents=`tar -xzvf zscanner_binary.tar.gz`
+echo $tar_contents
+echo "binary downloaded and retrieved zscanner"
+get_scanner=`sudo install zscanner /usr/local/bin && rm zscanner && chmod u+x zscanner`
 echo "check zscanner"
-zscanner version
-zscanner config list -a
-zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
-zscanner config list -a
-zscanner logout
+`zscanner version`
+`zscanner config list -a`
+`zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"`
+`zscanner config list -a`
+`zscanner logout`
 checkLogin=`zscanner login cc --client-id KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu --client-secret 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
 loginString='Logged in as system'
 if [ "$checkLogin" == "$loginString" ]
