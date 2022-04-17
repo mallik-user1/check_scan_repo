@@ -12,6 +12,7 @@ $(curl --location --request GET 'https://int.api.zscwp.io/iac/onboarding/v1/cli/
     "arch": "x86_64"
 }' --output zscanner_binary.tar.gz)
 echo "binary downloaded"
+$(ls -lart zscanner_binary.tar.gz)
 $(tar -xf zscanner_binary.tar.gz)
 echo "retrieved zscanner"
 $(sudo install zscanner /usr/local/bin && rm zscanner)
