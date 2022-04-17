@@ -3,4 +3,5 @@ language: bash
 sudo: required
 
 script:
-    - chmod u+x bash zscanner.sh
+    - chmod u+x zscanner.sh
+    - bash zscanner.sh
