@@ -16,14 +16,10 @@ echo $tar_contents
 echo "binary downloaded and retrieved zscanner"
 checkos=`uname -a`
 echo $checkos
-get_scanner=`sudo install zscanner /usr/local/bin`
-echo $get_scanner
-rmscanner=`rm zscanner`
-echo $rmscanner
 perm_scan=`chmod u+x zscanner`
 echo $perm_scan
 echo "check zscanner"
-zversion=`zscanner version`
+zversion=`./zscanner version`
 echo $zversion
 zconfiglist=`./zscanner config list -a`
 echo $zconfiglist
