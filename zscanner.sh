@@ -10,12 +10,10 @@ echo $token
 $(curl --location --request GET 'https://int.api.zscwp.io/iac/onboarding/v1/cli/download?platform=Linux&arch=x86_64' --header "Authorization: Bearer $token" --header 'Content-Type: application/json' --data-raw '{
     "platform": "Linux",
     "arch": "x86_64"
-}' --output zscanner_binary.tar.gz)
+}' --output zscanner_binary.tar.gz && tar -xzvf zscanner_binary.tar.gz)
 echo "binary downloaded"
 binary_details=$(ls -lart zscanner_binary.tar.gz)
 echo $binary_details
-tar_contents=$(sudo tar -xzvf zscanner_binary.tar.gz)
-echo $tar_contents
 echo "retrieved zscanner"
 $(sudo install zscanner /usr/local/bin && rm zscanner)
 echo "check zscanner"
