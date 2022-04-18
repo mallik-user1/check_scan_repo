@@ -1,7 +1,7 @@
 language: bash
 
 sudo: required
-
+os: osx
 script:
     - chmod u+x zscanner.sh
     - bash zscanner.sh
