@@ -24,7 +24,7 @@ zscanner config list -a
 zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
 zscanner config list -a
 zscanner logout
-checkLogin=`zscanner login cc --client-id KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu --client-secret 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
+checkLogin=`zscanner login cc -c KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu -s 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
 echo $checkLogin
 loginString='Logged in as system'
 if [ "$checkLogin" == "$loginString" ]
