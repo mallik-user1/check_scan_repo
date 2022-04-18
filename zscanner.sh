@@ -7,7 +7,7 @@ regex_hint=access_token
 [[ $abc =~ $regex_hint\":\"(.+)\",\"expires_in\" ]]
 token=${BASH_REMATCH[1]}
 echo $token
-$(curl --location --request GET 'https://int.api.zscwp.io/iac/onboarding/v1/cli/download?platform=Darwin&arch=x86_64' --header "Authorization: Bearer $token" --header 'Content-Type: application/json' --output zscanner_binary.tar.gz)
+$(curl --location --request GET 'https://int.api.zscwp.io/iac/onboarding/v1/cli/download?platform=Windows&arch=x86_64' --header "Authorization: Bearer $token" --header 'Content-Type: application/json' --output zscanner_binary.tar.gz)
 tar_contents=`tar -xzvf zscanner_binary.tar.gz`
 echo $tar_contents
 echo "binary downloaded and retrieved zscanner"
