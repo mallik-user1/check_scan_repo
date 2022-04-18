@@ -19,11 +19,8 @@ echo $checkos
 $(sudo install zscanner /usr/local/bin && rm zscanner)
 echo "check zscanner"
 zscanner version
-zscanner config list -a
-zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"qdtlYwvGB6HPDj1l93KxfyHU331YDJMF\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
-zscanner config list -a
 zscanner logout
-checkLogin=`zscanner login cc -c KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu -s 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
+checkLogin=`zscanner login cc -c lSxLvTb5g3ofYcpGnwr23rv5ELlKFLY9 -s dmkq5bsCOK_iDASjxTcq2C4VxwAVQQnOOUGToi9UWgeYacB8r1RClljA7EmcuDWQ -r US`
 echo $checkLogin
 loginString='Logged in as system'
 if [ "$checkLogin" == "$loginString" ]
