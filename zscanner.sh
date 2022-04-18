@@ -13,16 +13,15 @@ echo $tar_contents
 echo "binary downloaded and retrieved zscanner"
 checkos=`uname -a`
 echo $checkos
-$(sudo install zscanner /usr/local/bin && rm zscanner)
 echo "check zscanner version"
-zscanner version
-zscanner config list -a
+./zscanner.exe version
+./zscanner.exe config list -a
 echo "add zscanner config"
-zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"qdtlYwvGB6HPDj1l93KxfyHU331YDJMF\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
+./zscanner.exe config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"qdtlYwvGB6HPDj1l93KxfyHU331YDJMF\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
 echo "zscanner config done"
 zscanner config list -a
 echo "attempt to Login"
-checkLogin=`zscanner login cc -c KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu -s 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM --log-level debug`
+checkLogin=`./zscanner.exe login cc -c KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu -s 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM --log-level debug`
 echo $checkLogin
 loginString='Logged in as system'
 if [ "$checkLogin" == "$loginString" ]
@@ -31,7 +30,7 @@ then
 else
   echo "Failed to login to system"
 fi
-zscanner scan -d .
+./zscanner.exe scan -d .
 if [ $? == 0 ]
 then
   echo "Scan passed and no violations"
