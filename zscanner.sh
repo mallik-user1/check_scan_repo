@@ -16,19 +16,14 @@ echo $tar_contents
 echo "binary downloaded and retrieved zscanner"
 checkos=`uname -a`
 echo $checkos
-perm_scan=`chmod u+x zscanner`
-echo $perm_scan
+$(sudo install zscanner /usr/local/bin && rm zscanner)
+$(chmod u+x zscanner)
 echo "check zscanner"
-zversion=`./zscanner version`
-echo $zversion
-zconfiglist=`./zscanner config list -a`
-echo $zconfiglist
-zconfigadd=`zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"`
-echo $zconfigadd
-zconfiglist1=`zscanner config list -a`
-echo $zconfiglist1
-zlogout=`zscanner logout`
-echo $zlogout
+zscanner version
+zscanner config list -a
+zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
+zscanner config list -a
+zscanner logout
 checkLogin=`zscanner login cc --client-id KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu --client-secret 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
 echo $checkLogin
 loginString='Logged in as system'
@@ -38,8 +33,7 @@ then
 else
   echo "Failed to login to system"
 fi
-zscan=`zscanner scan -d .`
-echo $zscan
+zscanner scan -d .
 if [ $? == 0 ]
 then
   echo "Scan passed and no violations"
