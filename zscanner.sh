@@ -17,11 +17,10 @@ echo "binary downloaded and retrieved zscanner"
 checkos=`uname -a`
 echo $checkos
 $(sudo install zscanner /usr/local/bin && rm zscanner)
-$(chmod u+x zscanner)
 echo "check zscanner"
 zscanner version
 zscanner config list -a
-zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
+zscanner config add -k custom_region -v "{\"host\":\"https://int.api.zscwp.io\",\"auth\":{\"host\":\"https://z-cwp-int.us.auth0.com\",\"clientId\":\"qdtlYwvGB6HPDj1l93KxfyHU331YDJMF\",\"scope\":\"offline_access profile\",\"audience\":\"https://api.zscwp.io/iac\"}}"
 zscanner config list -a
 zscanner logout
 checkLogin=`zscanner login cc -c KM9TPNvqLuQ06OV1pL7GMsrs3ydglzHu -s 2fevB95DNUBpPw-FKI-e2Fo7EED1aaMMkrMg1FzmhXrqDyOouR3jqCxbx_GpoXxQ -r CUSTOM`
