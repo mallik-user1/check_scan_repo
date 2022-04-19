@@ -102,7 +102,7 @@ resource "aws_ssm_parameter" "km_ssm_db_name" {
 }
 
 resource "aws_s3_bucket" "km_blob_storage" {
-  #zs:skip=AC_AWS_0497 ignore
+  #zs:skip=AC_AWS_0497 ignore now
   #zs:skip=AC_AWS_0215 ignore
   bucket = "km-blob-storage-${var.environment}"
   acl    = "private"
